@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Nav from "react-bootstrap/Nav";
@@ -41,6 +41,26 @@ function App() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+
+            <Routes>
+                <Route exact path={"/"} element={<Movie></Movie>}></Route>
+                <Route exact path={"/movies"} element={<Movie></Movie>}></Route>
+
+                <Route
+                    path="/movies/:id/review"
+                    render={(props) => (
+                        <AddReview {...props} user={user}></AddReview>
+                    )}
+                ></Route>
+                <Route
+                    path="/movies/:id"
+                    render={(props) => <Movie {...props} user={user} />}
+                ></Route>
+                <Route
+                    path="/login"
+                    render={(props) => <Login {...props} login={login} />}
+                ></Route>
+            </Routes>
         </div>
     );
 }
