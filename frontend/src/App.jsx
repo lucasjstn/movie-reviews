@@ -11,6 +11,16 @@ import Movie from "./components/movie";
 import Login from "./components/login";
 
 function App() {
+    const [user, setUser] = React.useState(null);
+
+    async function login(user = null) {
+        setUser(user);
+    }
+
+    async function logout() {
+        setUser(null);
+    }
+
     return (
         <div className="App">
             <Navbar bg="light" expand="lg">
@@ -23,7 +33,7 @@ function App() {
                         </Nav.Link>
                         <Nav.Link>
                             {user ? (
-                                <a>Logout User</a>
+                                <a onClick={logout}>Logout User</a>
                             ) : (
                                 <Link to={"/login"}>Login</Link>
                             )}
