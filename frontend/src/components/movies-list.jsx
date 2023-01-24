@@ -7,6 +7,34 @@ const MoviesList = (props) => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchRating, setSearchRating] = useState("");
     const [ratings, setRatings] = useState(["All Ratings"]);
+
+    useEffect(() => {
+        retrieveMovies();
+        retrieveRatings();
+    }, []);
+
+    const retrieveMovies = () => {
+        MovieDataService.getAll()
+            .then((response) => {
+                console.log(response.data);
+                setMovies(response.data.movies);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
+    const retrieveRatings = () => {
+        MovieDataService.getRatings()
+            .then((response) => {
+                console.log(response.data);
+                // start with "All Ratings" if user doesn't specify any ratigns
+                setRatings(["All ratings"].concat(response.data));
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
 };
 
-export default MovieList;
+export default MoviesList;
