@@ -43,8 +43,8 @@ function App() {
             </Navbar>
 
             <Routes>
-                <Route exact path={"/"} element={<Movie></Movie>}></Route>
-                <Route exact path={"/movies"} element={<Movie></Movie>}></Route>
+                <Route exact path={"/"} element={<MoviesList></MoviesList>}></Route>
+                <Route exact path={"/movies"} element={<MoviesList></MoviesList>}></Route>
 
                 <Route
                     path="/movies/:id/review"
