@@ -63,11 +63,12 @@ function App(props) {
                 <Route
                     path="/movies/:id"
                     element={<Movie {...props} user={user} />}
-                    loader={({params}) => console.log(params.id)}
+                    loader={({ params }) => params}
                 ></Route>
                 <Route
                     path="/login"
-                    render={(props) => <Login {...props} login={login} />}
+                    element={<Login login={login} />}
+                    loader={({ props }) => console.log(props)}
                 ></Route>
             </Routes>
         </div>
