@@ -71,7 +71,7 @@ const Movie = (props) => {
                                     <Card.Body>
                                         <h5>
                                             {review.name +
-                                                "reviwed on" +
+                                                " reviewed on " +
                                                 review.date}
                                         </h5>
                                         <p>{review.review}</p>
