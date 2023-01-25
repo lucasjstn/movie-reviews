@@ -10,7 +10,7 @@ import MoviesList from "./components/movies-list";
 import Movie from "./components/movie";
 import Login from "./components/login";
 
-function App() {
+function App(props) {
     const [user, setUser] = React.useState(null);
 
     async function login(user = null) {
@@ -43,8 +43,16 @@ function App() {
             </Navbar>
 
             <Routes>
-                <Route exact path={"/"} element={<MoviesList></MoviesList>}></Route>
-                <Route exact path={"/movies"} element={<MoviesList></MoviesList>}></Route>
+                <Route
+                    exact
+                    path={"/"}
+                    element={<MoviesList></MoviesList>}
+                ></Route>
+                <Route
+                    exact
+                    path={"/movies"}
+                    element={<MoviesList></MoviesList>}
+                ></Route>
 
                 <Route
                     path="/movies/:id/review"
@@ -54,7 +62,8 @@ function App() {
                 ></Route>
                 <Route
                     path="/movies/:id"
-                    render={(props) => <Movie {...props} user={user} />}
+                    element={<Movie {...props} user={user} />}
+                    loader={({params}) => console.log(params.id)}
                 ></Route>
                 <Route
                     path="/login"

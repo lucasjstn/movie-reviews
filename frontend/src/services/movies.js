@@ -6,7 +6,7 @@ class MovieDataService {
     }
 
     get(id) {
-        return axios.get(`http://localhost:5000/api/v1/movies?page=${id}`);
+        return axios.get(`http://localhost:5000/api/v1/movies/id/${id}`);
     }
 
     find(query, by = "title", page = 0) {
