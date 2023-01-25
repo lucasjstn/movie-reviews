@@ -11,6 +11,9 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 // import Media from "react-bootstrap/Media";
 
+// format date
+import moment from "moment";
+
 const Movie = (props) => {
     let params = useParams();
 
@@ -70,9 +73,8 @@ const Movie = (props) => {
                                 <Card key={index}>
                                     <Card.Body>
                                         <h5>
-                                            {review.name +
-                                                " reviewed on " +
-                                                review.date}
+                                            {review.name + " reviewed on "}
+                                            {moment(review.date).format("Do MMMM YYYY")}
                                         </h5>
                                         <p>{review.review}</p>
                                         {props.user &&
@@ -91,9 +93,13 @@ const Movie = (props) => {
                                                                         review,
                                                                 },
                                                             }}
-                                                        >Edit</Link>
+                                                        >
+                                                            Edit
+                                                        </Link>
                                                     </Col>
-                                                    <Button variant="link">Delete</Button>
+                                                    <Button variant="link">
+                                                        Delete
+                                                    </Button>
                                                 </Row>
                                             )}
                                     </Card.Body>
